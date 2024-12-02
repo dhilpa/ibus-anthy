@@ -335,8 +335,10 @@ fi
 
 dnl - check XKB option in IBus.EngineDesc
 AC_MSG_CHECKING([if IBus.EngineDesc has get_layout_option])
-LAYOUT_OPTION_TEST="from gi.repository import IBus
-exit(not hasattr(IBus.EngineDesc, 'get_layout_option'))
+LAYOUT_OPTION_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
+exit(not hasattr(IBus.Property, 'get_symbol'))
 "
 $PYTHON -c "$LAYOUT_OPTION_TEST"
 if test $? -eq 0; then
