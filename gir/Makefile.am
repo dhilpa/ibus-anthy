@@ -59,7 +59,7 @@ anthyinclude_HEADERS = \
 
 Anthy-9000.gir: $(libanthygobject) Makefile
 Anthy_9000_gir_SCANNERFLAGS = \
-	--pkg=$(ANTHY_PC) \
+	--pkg=$(STAGING_DIR_HOST)/usr/lib/pkgconfig/anthy.pc \
 	--external-library \
 	--reparse-validate \
 	--identifier-prefix=Anthy \
@@ -73,7 +73,8 @@ Anthy_9000_gir_CFLAGS = @ANTHY_CFLAGS@
 Anthy_9000_gir_FILES = \
 	$(libanthygobject_1_0_la_SOURCES) \
 	$(anthyinclude_HEADERS) \
-	${STAGING_DIR_HOST}/usr/include/anthy/anthy.h \
+	$(STAGING_DIR_HOST)/usr/include/anthy/anthy.h \
+	$(STAGING_DIR_HOST)/usr/lib/pkgconfig/anthy.pc \
 	$(NULL)
 INTROSPECTION_GIRS += Anthy-9000.gir
 
