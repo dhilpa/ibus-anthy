@@ -73,7 +73,7 @@ Anthy_9000_gir_CFLAGS = @ANTHY_CFLAGS@
 Anthy_9000_gir_FILES = \
 	$(libanthygobject_1_0_la_SOURCES) \
 	$(anthyinclude_HEADERS) \
-	$(ANTHY_INCLUDEDIR)/anthy/anthy.h \
+	${STAGING_DIR_HOST}/usr/include/anthy/anthy.h \
 	$(NULL)
 INTROSPECTION_GIRS += Anthy-9000.gir
 
