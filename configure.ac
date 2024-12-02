@@ -154,26 +154,9 @@ AM_CONDITIONAL([ENABLE_PYTHON2], [test x"$enable_python2" = x"yes"])
 AM_CONDITIONAL([ENABLE_PYTHON3], [test x"$enable_python3" = x"yes"])
 
 dnl - check the supported ibus version
-AC_MSG_CHECKING([if your ibus version is supported])
-IBUS_VERSION_TEST="
-from gi.repository import IBus
-def _ibus_check_version(v):
-    major = IBus.MAJOR_VERSION
-    minor = IBus.MINOR_VERSION
-    micro = IBus.MICRO_VERSION
-    if (major, minor, micro) < tuple(map(int, (v.split('.')))):
-        raise ValueError('Required ibus %s but version of ibus is %d.%d.%d' % \
-                         (v, major, minor, micro))
-
-_ibus_check_version('ibus_required_version')
-exit(0)
-"
-$PYTHON -c "$IBUS_VERSION_TEST"
-if test $? -eq 0; then
-AC_MSG_RESULT([yes])
-else
-AC_MSG_ERROR([no])
-fi
+PKG_CHECK_MODULES(IBUS, [
+    ibus-1.0 >= 1.5.11
+])
 
 dnl - engine-env
 AC_MSG_CHECKING([what are the enviroments for ibus-engine-anthy])
