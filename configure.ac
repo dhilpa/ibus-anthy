@@ -300,63 +300,63 @@ fi
 AC_SUBST(HOTKEYS_XML)
 
 dnl - check symbol in IBus.EngineDesc
-# AC_MSG_CHECKING([if IBus.EngineDesc has get_symbol])
-# SYMBOL_CHAR='&#x3042;'
-# SYMBOL_CHAR_INT=0x3042
-# SYMBOL_TEST="import gi
-# gi.require_version('IBus', '1.0')
-# from gi.repository import IBus
-# exit(not hasattr(IBus.EngineDesc, 'get_symbol'))
-# "
-# $PYTHON -c "$SYMBOL_TEST"
-# if test $? -eq 0; then
-#     SYMBOL_XML="<symbol>${SYMBOL_CHAR}</symbol>"
-#     AC_MSG_RESULT([yes])
-# else
-#     SYMBOL_XML="<!-- <symbol>${SYMBOL_CHAR}</symbol> -->"
-#     AC_MSG_ERROR([ibus 1.4 or later supports symbol in IBus.EngineDesc])
-# fi
-# AC_SUBST(SYMBOL_CHAR_INT)
-# AC_SUBST(SYMBOL_XML)
+AC_MSG_CHECKING([if IBus.EngineDesc has get_symbol])
+SYMBOL_CHAR='&#x3042;'
+SYMBOL_CHAR_INT=0x3042
+SYMBOL_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
+exit(not hasattr(IBus.EngineDesc, 'get_symbol'))
+"
+$PYTHON -c "$SYMBOL_TEST"
+if test $? -eq 0; then
+    SYMBOL_XML="<symbol>${SYMBOL_CHAR}</symbol>"
+    AC_MSG_RESULT([yes])
+else
+    SYMBOL_XML="<!-- <symbol>${SYMBOL_CHAR}</symbol> -->"
+    AC_MSG_ERROR([ibus 1.4 or later supports symbol in IBus.EngineDesc])
+fi
+AC_SUBST(SYMBOL_CHAR_INT)
+AC_SUBST(SYMBOL_XML)
 
 dnl - check symbol in IBus.Property
-# AC_MSG_CHECKING([if IBus.Property has get_symbol])
-# SYMBOL_TEST="import gi
-# gi.require_version('IBus', '1.0')
-# from gi.repository import IBus
-# exit(not hasattr(IBus.Property, 'get_symbol'))
-# "
-# $PYTHON -c "$SYMBOL_TEST"
-# if test $? -eq 0; then
-#     AC_MSG_RESULT([yes])
-# else
-#     AC_MSG_ERROR([ibus 1.5 or later supports symbol in IBus.Property])
-# fi
+AC_MSG_CHECKING([if IBus.Property has get_symbol])
+SYMBOL_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
+exit(not hasattr(IBus.Property, 'get_symbol'))
+"
+$PYTHON -c "$SYMBOL_TEST"
+if test $? -eq 0; then
+    AC_MSG_RESULT([yes])
+else
+    AC_MSG_ERROR([ibus 1.5 or later supports symbol in IBus.Property])
+fi
 
-# dnl - check XKB option in IBus.EngineDesc
-# AC_MSG_CHECKING([if IBus.EngineDesc has get_layout_option])
-# LAYOUT_OPTION_TEST="from gi.repository import IBus
-# exit(not hasattr(IBus.EngineDesc, 'get_layout_option'))
-# "
-# $PYTHON -c "$LAYOUT_OPTION_TEST"
-# if test $? -eq 0; then
-#     AC_MSG_RESULT([yes])
-# else
-#     AC_MSG_ERROR([ibus 1.5 or later supports layout_option in IBus.EngineDesc])
-# fi
+dnl - check XKB option in IBus.EngineDesc
+AC_MSG_CHECKING([if IBus.EngineDesc has get_layout_option])
+LAYOUT_OPTION_TEST="from gi.repository import IBus
+exit(not hasattr(IBus.EngineDesc, 'get_layout_option'))
+"
+$PYTHON -c "$LAYOUT_OPTION_TEST"
+if test $? -eq 0; then
+    AC_MSG_RESULT([yes])
+else
+    AC_MSG_ERROR([ibus 1.5 or later supports layout_option in IBus.EngineDesc])
+fi
 
-# AC_MSG_CHECKING([if IBus.EngineDesc has get_version])
-# DESC_VERSION_TEST="import gi
-# gi.require_version('IBus', '1.0')
-# from gi.repository import IBus
-# exit(not hasattr(IBus.EngineDesc, 'get_version'))
-# "
-# $PYTHON -c "$DESC_VERSION_TEST"
-# if test $? -eq 0; then
-#     AC_MSG_RESULT([yes])
-# else
-#     AC_MSG_ERROR([ibus 1.5 or later supports version in IBus.EngineDesc])
-# fi
+AC_MSG_CHECKING([if IBus.EngineDesc has get_version])
+DESC_VERSION_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
+exit(not hasattr(IBus.EngineDesc, 'get_version'))
+"
+$PYTHON -c "$DESC_VERSION_TEST"
+if test $? -eq 0; then
+    AC_MSG_RESULT([yes])
+else
+    AC_MSG_ERROR([ibus 1.5 or later supports version in IBus.EngineDesc])
+fi
 
 dnl - check icon_prop_key in IBus.EngineDesc
 AC_MSG_CHECKING([if IBus.EngineDesc has get_icon_prop_key])
