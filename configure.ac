@@ -303,7 +303,9 @@ dnl - check symbol in IBus.EngineDesc
 AC_MSG_CHECKING([if IBus.EngineDesc has get_symbol])
 SYMBOL_CHAR='&#x3042;'
 SYMBOL_CHAR_INT=0x3042
-SYMBOL_TEST="from gi.repository import IBus
+SYMBOL_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
 exit(not hasattr(IBus.EngineDesc, 'get_symbol'))
 "
 $PYTHON -c "$SYMBOL_TEST"
@@ -319,7 +321,9 @@ AC_SUBST(SYMBOL_XML)
 
 dnl - check symbol in IBus.Property
 AC_MSG_CHECKING([if IBus.Property has get_symbol])
-SYMBOL_TEST="from gi.repository import IBus
+SYMBOL_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
 exit(not hasattr(IBus.Property, 'get_symbol'))
 "
 $PYTHON -c "$SYMBOL_TEST"
@@ -342,7 +346,9 @@ else
 fi
 
 AC_MSG_CHECKING([if IBus.EngineDesc has get_version])
-DESC_VERSION_TEST="from gi.repository import IBus
+DESC_VERSION_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
 exit(not hasattr(IBus.EngineDesc, 'get_version'))
 "
 $PYTHON -c "$DESC_VERSION_TEST"
@@ -354,7 +360,9 @@ fi
 
 dnl - check icon_prop_key in IBus.EngineDesc
 AC_MSG_CHECKING([if IBus.EngineDesc has get_icon_prop_key])
-ICON_PROP_KEY_TEST="from gi.repository import IBus
+ICON_PROP_KEY_TEST="import gi
+gi.require_version('IBus', '1.0')
+from gi.repository import IBus
 exit(not hasattr(IBus.EngineDesc, 'get_icon_prop_key'))
 "
 $PYTHON -c "$ICON_PROP_KEY_TEST"
